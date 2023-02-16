@@ -14,13 +14,12 @@ const quotient = (a,b) => {
     return a/b;
 }
 
-const operate = function(operator, firstNum, secondNum){
-    return operator(firstNum, secondNum);
+const operate = function(pick, firstNum, secondNum){
+    return pick(firstNum, secondNum);
 }
 
-const clear = function () {
-    
-}
+
+
 
 const display = document.querySelector(".display-box");
 const one = document.querySelector(".one")
@@ -36,12 +35,18 @@ const zero = document.querySelector(".zero")
 
 
 
-// adding a click event listener
+// adding an event listener on buttons
 
 const numbers = [zero, one, two, three, four, five, six, seven, eight, nine];
 
-let val = 0;
-let val2 = 0;
+const plus = document.querySelector('.plus');
+const minus = document.querySelector('.minus');
+const multiply = document.querySelector('.multiply');
+const divide = document.querySelector('.divide');
+const equal = document.querySelector('.equals');
+const clear = document.querySelector('.clear');
+
+
 
 numbers.forEach((num) => {
     num.addEventListener('click', () => {
@@ -49,22 +54,34 @@ numbers.forEach((num) => {
     })
 })
 
-const plus = document.querySelector('.plus');
-const minus = document.querySelector('.minus');
-const multiply = document.querySelector('.multiply');
-const divide = document.querySelector('.divide');
-const equal = document.querySelector('.equals');
+const calculator = { 
+    displayValue: null,
+    firstOperand: null,
+    secondOperand: null,
+    operator: null,
+}
 
+let val = null;
 
 plus.addEventListener('click', () => {
-    display.value = val;
-    display.value = 0;
+    val = display.value;
+    calculator.firstOperand = val;
+    display.value = '';
+
+      equal.addEventListener('click', () => {
+        let val2 = null;
+        val2 = display.value;
+        calculator.secondOperand = val2;
+
+        display.value = calculator.firstOperand + calculator.secondOperand;
+        });
 })
 
-equal.addEventListener('click', () => {
-    display.value = val2;
-    display.value = parseInt(val + val2);
+
+clear.addEventListener('click', () => {
+    display.value = '';
 })
+
 
 
 
