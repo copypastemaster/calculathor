@@ -65,15 +65,15 @@ let val = null;
 
 plus.addEventListener('click', () => {
     val = display.value;
-    calculator.firstOperand = val;
+    calculator.firstOperand = Number(val);
     display.value = '';
 
       equal.addEventListener('click', () => {
         let val2 = null;
         val2 = display.value;
-        calculator.secondOperand = val2;
-
-        display.value = calculator.firstOperand + calculator.secondOperand;
+        calculator.secondOperand = Number(val2);
+        display.value = Number(calculator.firstOperand + calculator.secondOperand);
+        return display.value;
         });
 })
 
