@@ -55,34 +55,42 @@ numbers.forEach((num) => {
 })
 
 const calculator = { 
-    displayValue: null,
     firstOperand: null,
     secondOperand: null,
-    operator: null,
+    total: null,
 }
 
-let val = null;
 
-plus.addEventListener('click', () => {
-    val = display.value;
-    calculator.firstOperand = Number(val);
-    display.value = '';
+    let val = null;
+    plus.addEventListener('click', () => {
+        val = display.value;
+        calculator.firstOperand = Number(val);
+        calculator.total =
+        display.value = 0;
+        display.value = '';
 
-      equal.addEventListener('click', () => {
-        let val2 = null;
-        val2 = display.value;
-        calculator.secondOperand = Number(val2);
-        display.value = Number(calculator.firstOperand + calculator.secondOperand);
-        return display.value;
-        });
-})
+        equal.addEventListener('click', () => {
+            let val2 = null;
+            val2 = display.value;
+            calculator.secondOperand = Number(val2);
+            calculator.total = calculator.firstOperand + calculator.secondOperand;
+            display.value = calculator.total;
+            return display.value;
+            });
+    })
+
+
+
+const arr = [1,2,3];
+
+console.log(arr.reduce((total, num) => {
+    return total + num;
+}, 5))
+
 
 
 clear.addEventListener('click', () => {
     display.value = '';
 })
-
-
-
 
 
