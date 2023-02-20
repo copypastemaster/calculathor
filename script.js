@@ -48,49 +48,46 @@ const clear = document.querySelector('.clear');
 
 
 
-numbers.forEach((num) => {
-    num.addEventListener('click', () => {
-       val = +(display.value += num.value);;
+let initValue = null;
+let secondValue = null;
+
+numbers.forEach((nums) => {
+    nums.addEventListener('click', () => {
+        display.value += nums.value
     })
 })
 
-const calculator = { 
-    firstOperand: null,
-    secondOperand: null,
-    total: null,
-}
 
-
-    let val = null;
-    plus.addEventListener('click', () => {
-        val = display.value;
-        calculator.firstOperand = Number(val);
-        calculator.total =
-        display.value = 0;
-        display.value = '';
-
-        equal.addEventListener('click', () => {
-            let val2 = null;
-            val2 = display.value;
-            calculator.secondOperand = Number(val2);
-            calculator.total = calculator.firstOperand + calculator.secondOperand;
-            display.value = calculator.total;
-            return display.value;
-            });
-    })
-
-
-
-const arr = [1,2,3];
-
-console.log(arr.reduce((total, num) => {
-    return total + num;
-}, 5))
-
-
-
-clear.addEventListener('click', () => {
+plus.addEventListener('click', () => {
+    initValue = Number(display.value);
+    display.value = 0;
     display.value = '';
 })
 
+equal.addEventListener('click', () => {
+    secondValue = Number(display.value);
+    display.value = initValue + secondValue;
+})
 
+
+
+
+// const obj = { 
+//     firstOperand: null,
+//     secondOperand: null,
+//     total: null,
+// }
+
+
+// plus.addEventListener('click', () => {
+//     obj.firstOperand = Number(display.value);
+//     display.value = 0;
+//     display.value = '';
+
+//     equal.addEventListener('click', () => {
+//         obj.secondOperand = Number(display.value);
+//         obj.total = obj.firstOperand + obj.secondOperand;
+//         display.value = obj.total;
+//         console.log(obj);
+//     })
+// })
