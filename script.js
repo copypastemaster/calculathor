@@ -1,26 +1,3 @@
-const sum = (a,b) => {
-    return a+b
-};
-
-const prod = (a,b) => {
-    return a * b;
-}
-
-const diff = (a,b) => {
-    return a - b;
-}
-
-const quotient = (a,b) => {
-    return a/b;
-}
-
-const operate = function(pick, firstNum, secondNum){
-    return pick(firstNum, secondNum);
-}
-
-
-
-
 const display = document.querySelector(".display-box");
 const one = document.querySelector(".one")
 const two = document.querySelector(".two")
@@ -45,11 +22,10 @@ const multiply = document.querySelector('.multiply');
 const divide = document.querySelector('.divide');
 const equal = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
+const del = document.querySelector('.undo');
 
 
 
-let initValue = null;
-let secondValue = null;
 
 numbers.forEach((nums) => {
     nums.addEventListener('click', () => {
@@ -58,36 +34,37 @@ numbers.forEach((nums) => {
 })
 
 
-plus.addEventListener('click', () => {
-    initValue = Number(display.value);
+let initValue = null;
+let secondValue = null;
+
+
+function sum () {
+
+    plus.addEventListener('click', () => {
+        initValue = Number(display.value);
+        display.value = 0;
+        display.value = '';
+    })
+    
+    equal.addEventListener('click', () => {
+        secondValue = Number(display.value);
+        display.value = initValue + secondValue;
+    })    
+}
+
+plus.addEventListener('click', sum())
+
+
+clear.addEventListener('click', () => {
+    initValue = null;
+    secondValue = null;
     display.value = 0;
     display.value = '';
 })
 
-equal.addEventListener('click', () => {
-    secondValue = Number(display.value);
-    display.value = initValue + secondValue;
+
+del.addEventListener('click', () => {
+    let a = [...display.value];
+    let b = a.pop();
+    display.value = a.join('');
 })
-
-
-
-
-// const obj = { 
-//     firstOperand: null,
-//     secondOperand: null,
-//     total: null,
-// }
-
-
-// plus.addEventListener('click', () => {
-//     obj.firstOperand = Number(display.value);
-//     display.value = 0;
-//     display.value = '';
-
-//     equal.addEventListener('click', () => {
-//         obj.secondOperand = Number(display.value);
-//         obj.total = obj.firstOperand + obj.secondOperand;
-//         display.value = obj.total;
-//         console.log(obj);
-//     })
-// })
