@@ -16,6 +16,13 @@ const zero = document.querySelector(".zero")
 
 const numbers = [zero, one, two, three, four, five, six, seven, eight, nine];
 
+numbers.forEach((nums) => {
+    nums.addEventListener('click', () => {
+        display.value += nums.value
+    })
+})
+
+
 const plus = document.querySelector('.plus');
 const minus = document.querySelector('.minus');
 const multiply = document.querySelector('.multiply');
@@ -24,35 +31,100 @@ const equal = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
 const del = document.querySelector('.undo');
 
+ 
+const sum = (a,b) => {
+    return a+b
+};
 
+const prod = (a,b) => {
+    return a * b;
+}
 
+const diff = (a,b) => {
+    return a - b;
+}
 
-numbers.forEach((nums) => {
-    nums.addEventListener('click', () => {
-        display.value += nums.value
-    })
-})
+const quotient = (a,b) => {
+    return a/b;
+}
+
+const operate = function(pick, firstNum, secondNum){
+    return pick(firstNum, secondNum);
+}
+
 
 
 let initValue = null;
 let secondValue = null;
+let total = null;
+
+let toggle = false;
 
 
-function sum () {
-
+function addition () {
     plus.addEventListener('click', () => {
         initValue = Number(display.value);
         display.value = 0;
         display.value = '';
+        toggle = true;
+    })
+
+    equal.addEventListener('click', () => {
+        secondValue = Number(display.value)
+
+        if (toggle == true) {
+            display.value = initValue + secondValue;
+        }
+        
+        toggle = false;
     })
     
-    equal.addEventListener('click', () => {
-        secondValue = Number(display.value);
-        display.value = initValue + secondValue;
-    })    
 }
 
-plus.addEventListener('click', sum())
+plus.addEventListener('click', addition());
+
+
+
+
+// function add () {
+    
+//     console.log(`initval: ${initValue}`)
+
+//     plus.addEventListener('click', () => {
+//         initValue = Number(display.value);
+//         console.log(`secondInitval: ${initValue}`);
+//         display.value = 0;
+//         display.value = '';
+//     })
+    
+//     equal.addEventListener('click', () => {
+//             total = operate(sum, initValue, Number(display.value))
+//             display.value = total;
+//         })
+// }
+// plus.addEventListener('click', add())
+
+
+// function difference () {
+    
+//     console.log(`initval: ${initValue}`)
+
+//     minus.addEventListener('click', () => {
+//         initValue = Number(display.value);
+//         console.log(`secondInitval: ${initValue}`);
+//         display.value = 0;
+//         display.value = '';
+//     })
+    
+//     equal.addEventListener('click', () => {
+//         total = operate(diff, initValue, Number(display.value));
+//         display.value = total;
+//     })
+// }
+// minus.addEventListener('click', difference());
+
+
+
 
 
 clear.addEventListener('click', () => {
