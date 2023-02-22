@@ -40,10 +40,15 @@ arr.forEach((item) => {
     })
 })
 
-equal.addEventListener('click', () => {
+equal.addEventListener('click', (e) => {
+    if (display.value == '' || display.value == 0) {
+        return display.value = '';
+    }
+
     let a = display.value;
     let b = eval(a);
     display.value = b;
+    e.preventDefault();
 })
 
 
@@ -60,3 +65,6 @@ del.addEventListener('click', () => {
     let b = a.pop();
     display.value = a.join('');
 })
+
+
+console.log(ca)
