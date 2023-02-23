@@ -40,7 +40,7 @@ arr.forEach((item) => {
     })
 })
 
-equal.addEventListener('click', (e) => {
+equal.addEventListener('click', () => {
     if (display.value == '' || display.value == 0) {
         return display.value = '';
     }
@@ -48,7 +48,7 @@ equal.addEventListener('click', (e) => {
     let a = display.value;
     let b = eval(a);
     display.value = b;
-    e.preventDefault();
+
 })
 
 
